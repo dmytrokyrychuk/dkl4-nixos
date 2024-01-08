@@ -21,6 +21,7 @@ in
       ./hardware-configuration.nix
       ./disko-config.nix
       ./gui-i3.nix
+      ./docker.nix
     ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -82,6 +83,17 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    kakoune
+    git
+    home-manager
+    slack
+    google-chrome
+    microsoft-edge
+    telegram-desktop
+    nil
+    nixpkgs-fmt
+    htop
+    tree
     #  wget
   ];
 
@@ -98,6 +110,19 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
+
+  nix = {
+    settings = {
+      experimental-features = "nix-command flakes";
+      auto-optimise-store = true;
+    };
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

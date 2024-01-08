@@ -20,7 +20,7 @@
       homeConfigurations = {
         "dmytro@dkl4" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialrgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home-manager/home.nix
           ];
