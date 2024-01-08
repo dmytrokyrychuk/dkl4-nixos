@@ -4,7 +4,11 @@
     enable = true;
     config = {
       startup = [
+        {
+          command = "xfce4-panel --disable-wm-check";
+        }
       ];
+      bars = lib.mkForce [ ]; # disable i3status in favor of xfce4-panel
       keybindings =
         let
           mod = "Mod1";

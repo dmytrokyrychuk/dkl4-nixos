@@ -5,7 +5,7 @@
     ./fonts.nix
     ./kitty.nix
     ./rofi.nix
-#    ./firefox.nix
+    #    ./firefox.nix
   ];
 
   nixpkgs = {

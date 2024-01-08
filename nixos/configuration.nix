@@ -20,7 +20,7 @@ in
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disko-config.nix
-      ./gui-i3.nix
+      ./xfce.nix
       ./docker.nix
     ];
   # Use the systemd-boot EFI boot loader.
@@ -29,6 +29,7 @@ in
 
   networking.hostName = "dkl4";
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Kyiv";
@@ -94,8 +95,13 @@ in
     nixpkgs-fmt
     htop
     tree
+    spotify
+    virt-viewer
     #  wget
   ];
+
+  # hardware.pulseaudio.enable = true;
+  # users.extraUsers.dmytro.extraGroups = [ "audio" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
