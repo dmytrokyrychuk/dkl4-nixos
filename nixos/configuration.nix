@@ -20,6 +20,7 @@ in
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disko-config.nix
+      ./gui-i3.nix
     ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
