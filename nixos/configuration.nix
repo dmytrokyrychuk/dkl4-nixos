@@ -96,8 +96,15 @@ in
     htop
     tree
     spotify
+    obsidian
     virt-viewer
     #  wget
+  ];
+
+  fonts.packages = [
+    (pkgs.nerdfonts.override {
+      fonts = [ "CodeNewRoman" "DroidSansMono" ];
+    })
   ];
 
   # hardware.pulseaudio.enable = true;
@@ -117,6 +124,8 @@ in
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
 
+  programs.ssh.startAgent = true;
+
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
@@ -127,6 +136,9 @@ in
   nixpkgs = {
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+      ];
     };
   };
 
