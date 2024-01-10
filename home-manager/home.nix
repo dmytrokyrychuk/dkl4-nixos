@@ -51,6 +51,8 @@
       oderwat.indent-rainbow
       arrterian.nix-env-selector
       ms-python.python
+      ms-vscode-remote.remote-ssh
+      ms-vscode-remote.remote-containers
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-icons";
@@ -73,13 +75,17 @@
       "workbench.colorTheme" = "Ayu Light";
       "workbench.iconTheme" = "vscode-icons";
 
+      "remote.SSH.useLocalServer" = false;
+      "remote.SSH.remotePlatform" = {
+        "dkvm03.home.kyrych.uk" = "linux";
+      };
+      "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
 
       "editor.lineNumbers" = "relative";
       "editor.renderWhitespace" = "trailing";
       "editor.rulers" = [ 80 120 ];
       "editor.formatOnSave" = true;
 
-      "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
       "terminal.integrated.defaultProfile.linux" = "fish";
 
       "vim.handleKeys" = {
@@ -111,6 +117,11 @@
     serverAliveInterval = 30;
     extraConfig = ''
       AddKeysToAgent yes
+
+      Host *.home.kyrych.uk
+      ForwardAgent yes
+
+      Host dkvm03.home.kyrych.uk
     '';
   };
 
