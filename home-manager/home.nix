@@ -79,6 +79,7 @@
       "editor.rulers" = [ 80 120 ];
       "editor.formatOnSave" = true;
 
+      "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
       "terminal.integrated.defaultProfile.linux" = "fish";
 
       "vim.handleKeys" = {
