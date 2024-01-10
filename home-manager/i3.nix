@@ -31,5 +31,18 @@
           "${mod}+Shift+${down}" = "move down";
         };
     };
+    extraConfig = ''
+      set $small eDP-1
+      set $big DP-1
+      workspace 1 output $small
+      workspace 2 output $big
+      workspace 3 output $big
+      workspace 4 output $big
+      workspace 5 output $big
+      workspace 6 output $small
+      workspace 7 output $small
+      workspace 8 output $big
+      workspace 9 output $small
+    '';
   };
 }
