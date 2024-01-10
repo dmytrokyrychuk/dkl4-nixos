@@ -19,6 +19,7 @@ in
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./hp-probook-430-g6.nix
       ./disko-config.nix
       ./xfce.nix
       ./docker.nix
@@ -26,6 +27,8 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  console.earlySetup = true;
 
   networking.hostName = "dkl4";
   networking.networkmanager.enable = true;
@@ -95,6 +98,7 @@ in
     nixpkgs-fmt
     htop
     tree
+    gparted
     spotify
     obsidian
     virt-viewer

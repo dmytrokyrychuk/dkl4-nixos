@@ -1,18 +1,20 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   inputs.home-manager.url = "github:nix-community/home-manager/release-23.11";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nur.url = "github:nix-community/NUR";
 
-  outputs = { self, nixpkgs, home-manager, disko, nur, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, disko, nur, ... }@inputs:
     let
       inherit (self) outputs;
     in
     {
       nixosConfigurations.dkl4 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs outputs; };
         modules = [
           disko.nixosModules.disko
           nur.nixosModules.nur
