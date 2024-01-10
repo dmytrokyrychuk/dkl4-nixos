@@ -1,6 +1,8 @@
 {
   disko.devices = {
     disk = {
+      # The name vdb stuck because this code was copied from an example that
+      # used /dev/vdb disk.
       vdb = {
         type = "disk";
         device = "/dev/disk/by-id/nvme-WD_Red_SN700_1000GB_23202N800573";
