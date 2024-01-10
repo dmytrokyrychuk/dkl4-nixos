@@ -131,6 +131,9 @@ in
 
   programs.ssh.startAgent = true;
 
+  programs.fish.enable = true;
+  users.users.dmytro.shell = pkgs.fish;
+
   nix = {
     settings = {
       experimental-features = "nix-command flakes";

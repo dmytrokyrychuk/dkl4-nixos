@@ -79,6 +79,8 @@
       "editor.rulers" = [ 80 120 ];
       "editor.formatOnSave" = true;
 
+      "terminal.integrated.defaultProfile.linux" = "fish";
+
       "vim.handleKeys" = {
         "<C-p>" = false;
       };
