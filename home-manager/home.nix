@@ -79,13 +79,13 @@
       "remote.SSH.remotePlatform" = {
         "dkvm03.home.kyrych.uk" = "linux";
       };
-      "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
 
       "editor.lineNumbers" = "relative";
       "editor.renderWhitespace" = "trailing";
       "editor.rulers" = [ 80 120 ];
       "editor.formatOnSave" = true;
 
+      "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
       "terminal.integrated.defaultProfile.linux" = "fish";
 
       "vim.handleKeys" = {
