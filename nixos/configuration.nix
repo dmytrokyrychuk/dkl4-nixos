@@ -112,6 +112,8 @@ in
     })
   ];
 
+  programs.vim.defaultEditor = true;
+
   # Allow running AppImage files directly
   boot.binfmt.registrations.appimage = {
     wrapInterpreterInShell = false;
