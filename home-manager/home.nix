@@ -20,8 +20,20 @@
   home = {
     username = "dmytro";
     homeDirectory = "/home/dmytro";
+    packages = with pkgs; [
+      speedcrunch
+      calibre
+      kazam
+    ];
   };
 
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.volantes-cursors;
+      name = "volantes-cursors";
+    };
+  };
   # Add stuff for your user as you see fit:
   programs.neovim = {
     enable = true;
@@ -53,6 +65,7 @@
       ms-python.python
       ms-vscode-remote.remote-ssh
       ms-vscode-remote.remote-containers
+      github.copilot
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-icons";
@@ -91,9 +104,12 @@
       "vim.handleKeys" = {
         "<C-p>" = false;
       };
+      "vim.easymotion" = true;
 
       "git.openDiffOnClick" = false;
       "scm.defaultViewMode" = "tree";
+
+      "zenMode.fullScreen" = false;
 
       "vsicons.dontShowNewVersionMessage" = true;
     };
@@ -115,6 +131,7 @@
   programs.ssh = {
     enable = true;
     serverAliveInterval = 30;
+    forwardAgent = true;
     extraConfig = ''
       AddKeysToAgent yes
 
@@ -122,7 +139,9 @@
       ForwardAgent yes
 
       Host dkvm03.home.kyrych.uk
+      ForwardAgent yes
     '';
+    includes = [ "${config.home.homeDirectory}/.ssh/config_private" ];
   };
 
   # Nicely reload system units when changing configs

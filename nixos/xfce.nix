@@ -66,6 +66,7 @@
     xfce.xfce4-i3-workspaces-plugin
     xfce.xfce4-xkb-plugin
     xfce.xfce4-pulseaudio-plugin
+    xfce.xfce4-genmon-plugin
     gnome.pomodoro
   ];
 

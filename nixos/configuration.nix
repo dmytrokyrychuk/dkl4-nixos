@@ -24,6 +24,7 @@ in
       ./xfce.nix
       ./docker.nix
       ./btrbk.nix
+      ./print-scan.nix
     ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -103,6 +104,13 @@ in
     spotify
     obsidian
     virt-viewer
+    dbeaver
+    shutter
+    gnumeric
+    meld
+    libreoffice-qt
+    gnome.file-roller
+    gnome.simple-scan
     #  wget
   ];
 
