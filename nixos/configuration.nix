@@ -29,6 +29,8 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = true;
+  boot.initrd.systemd.enable = true;
 
   console.earlySetup = true;
 
@@ -169,6 +171,9 @@ in
       ];
     };
   };
+
+  # FIXME: temporary
+  networking.firewall.allowedTCPPorts = [ 5432 5433 ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
