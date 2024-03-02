@@ -9,6 +9,8 @@
     nur.url = "github:nix-community/NUR";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -19,6 +21,7 @@
     disko,
     nur,
     vscode-server,
+    nix-index-database,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -39,6 +42,8 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           nur.hmModules.nur
+          nix-index-database.hmModules.nix-index
+          {programs.nix-index-database.comma.enable = true;}
           ./home-manager/home.nix
         ];
       };
