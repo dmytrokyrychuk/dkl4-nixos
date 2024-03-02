@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.firefox.enable = true;
   programs.firefox.profiles = {
     default = {

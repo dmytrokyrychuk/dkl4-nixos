@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     ./i3.nix
@@ -13,7 +20,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -61,33 +68,35 @@
     enable = true;
     enableUpdateCheck = false;
     package = pkgs.vscode;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      jnoortheen.nix-ide
-      oderwat.indent-rainbow
-      arrterian.nix-env-selector
-      ms-python.python
-      ms-vscode-remote.remote-ssh
-      ms-vscode-remote.remote-containers
-      github.copilot
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "vscode-icons";
-        publisher = "vscode-icons-team";
-        version = "12.2.0";
-        sha256 = "sha256-PxM+20mkj7DpcdFuExUFN5wldfs7Qmas3CnZpEFeRYs=";
-      }
-      {
-        name = "ayu";
-        publisher = "teabyii";
-        version = "1.0.5";
-        sha256 = "sha256-+IFqgWliKr+qjBLmQlzF44XNbN7Br5a119v9WAnZOu4=";
-      }
-    ];
+    extensions = with pkgs.vscode-extensions;
+      [
+        vscodevim.vim
+        jnoortheen.nix-ide
+        oderwat.indent-rainbow
+        arrterian.nix-env-selector
+        ms-python.python
+        ms-vscode-remote.remote-ssh
+        ms-vscode-remote.remote-containers
+        github.copilot
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "vscode-icons";
+          publisher = "vscode-icons-team";
+          version = "12.2.0";
+          sha256 = "sha256-PxM+20mkj7DpcdFuExUFN5wldfs7Qmas3CnZpEFeRYs=";
+        }
+        {
+          name = "ayu";
+          publisher = "teabyii";
+          version = "1.0.5";
+          sha256 = "sha256-+IFqgWliKr+qjBLmQlzF44XNbN7Br5a119v9WAnZOu4=";
+        }
+      ];
     userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
-      "nix.serverSettings.nil.formatting.command" = [ "nixpkgs-fmt" ];
+      "nix.serverSettings.nil.formatting.command" = ["nixpkgs-fmt"];
 
       "workbench.colorTheme" = "Ayu Light";
       "workbench.iconTheme" = "vscode-icons";
@@ -99,7 +108,7 @@
 
       "editor.lineNumbers" = "relative";
       "editor.renderWhitespace" = "trailing";
-      "editor.rulers" = [ 80 120 ];
+      "editor.rulers" = [80 120];
       "editor.formatOnSave" = true;
 
       "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
@@ -145,7 +154,7 @@
       Host dkvm03.home.kyrych.uk
       ForwardAgent yes
     '';
-    includes = [ "${config.home.homeDirectory}/.ssh/config_private" ];
+    includes = ["${config.home.homeDirectory}/.ssh/config_private"];
   };
 
   # Nicely reload system units when changing configs

@@ -1,9 +1,9 @@
-{ config, ... }: {
+{config, ...}: {
   fileSystems = {
     "/mnt/btr_pool" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = [ "subvolid=5" ];
+      options = ["subvolid=5"];
     };
   };
   services.btrbk = {

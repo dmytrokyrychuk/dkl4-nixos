@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -8,15 +12,14 @@
           command = "xfce4-panel --disable-wm-check";
         }
       ];
-      bars = lib.mkForce [ ]; # disable i3status in favor of xfce4-panel
-      keybindings =
-        let
-          mod = "Mod1";
-          left = "h";
-          down = "j";
-          up = "k";
-          right = "l";
-        in
+      bars = lib.mkForce []; # disable i3status in favor of xfce4-panel
+      keybindings = let
+        mod = "Mod1";
+        left = "h";
+        down = "j";
+        up = "k";
+        right = "l";
+      in
         lib.mkOptionDefault {
           # Focus
           "${mod}+${left}" = "focus left";

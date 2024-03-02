@@ -1,31 +1,30 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
-let
-  dmytrokyrychukKeys =
-    let
-      content = pkgs.fetchurl {
-        url = "https://github.com/dmytrokyrychuk.keys";
-        sha256 = "sha256-D45/lJ76om8VioV7uyCl19JbbArkqXCztyDLNlfW52g=";
-      };
-    in
-    pkgs.lib.splitString "\n" (builtins.readFile content);
-in
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./hp-probook-430-g6.nix
-      ./disko-config.nix
-      ./xfce.nix
-      ./docker.nix
-      ./btrbk.nix
-      ./print-scan.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  dmytrokyrychukKeys = let
+    content = pkgs.fetchurl {
+      url = "https://github.com/dmytrokyrychuk.keys";
+      sha256 = "sha256-D45/lJ76om8VioV7uyCl19JbbArkqXCztyDLNlfW52g=";
+    };
+  in
+    pkgs.lib.splitString "\n" (builtins.readFile content);
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./hp-probook-430-g6.nix
+    ./disko-config.nix
+    ./xfce.nix
+    ./docker.nix
+    ./btrbk.nix
+    ./print-scan.nix
+  ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -56,9 +55,6 @@ in
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-
-
   # Configure keymap in X11
   services.xserver.xkb.layout = "us,ua";
   services.xserver.xkb.options = "grp:shifts_toggle";
@@ -80,7 +76,7 @@ in
   users.users.dmytro = {
     isNormalUser = true;
     initialPassword = "123456";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
     packages = with pkgs; [
       #    firefox
       #    tree
@@ -118,7 +114,7 @@ in
 
   fonts.packages = [
     (pkgs.nerdfonts.override {
-      fonts = [ "CodeNewRoman" "DroidSansMono" ];
+      fonts = ["CodeNewRoman" "DroidSansMono"];
     })
   ];
 
@@ -175,7 +171,7 @@ in
   };
 
   # FIXME: temporary
-  networking.firewall.allowedTCPPorts = [ 5432 5433 ];
+  networking.firewall.allowedTCPPorts = [5432 5433];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -205,6 +201,4 @@ in
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
-

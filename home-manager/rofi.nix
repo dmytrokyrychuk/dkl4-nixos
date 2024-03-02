@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.rofi.enable = true;
   programs.rofi.theme = "Arc-Dark";
 

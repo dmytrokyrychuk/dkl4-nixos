@@ -11,31 +11,38 @@
     vscode-server.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, disko, nur, vscode-server, ... }@inputs:
-    let
-      inherit (self) outputs;
-    in
-    {
-      nixosConfigurations.dkl4 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs outputs; };
+  outputs = {
+    self,
+    nixpkgs,
+    nixos-hardware,
+    home-manager,
+    disko,
+    nur,
+    vscode-server,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+  in {
+    nixosConfigurations.dkl4 = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs outputs;};
+      modules = [
+        disko.nixosModules.disko
+        nur.nixosModules.nur
+        vscode-server.nixosModules.default
+        ./nixos/configuration.nix
+      ];
+    };
+    homeConfigurations = {
+      "dmytro@dkl4" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          disko.nixosModules.disko
-          nur.nixosModules.nur
-          vscode-server.nixosModules.default
-          ./nixos/configuration.nix
+          nur.hmModules.nur
+          ./home-manager/home.nix
         ];
       };
-      homeConfigurations = {
-        "dmytro@dkl4" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            nur.hmModules.nur
-            ./home-manager/home.nix
-          ];
-        };
-      };
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.pkgs.alejandra;
     };
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.pkgs.alejandra;
+  };
 }
