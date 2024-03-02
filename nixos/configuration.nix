@@ -147,6 +147,8 @@ in
 
   # List services that you want to enable:
 
+  services.vscode-server.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";

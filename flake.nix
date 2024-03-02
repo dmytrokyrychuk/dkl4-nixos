@@ -6,8 +6,10 @@
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nur.url = "github:nix-community/NUR";
+  inputs.vscode-server.url = "github:nix-community/nixos-vscode-server";
+  inputs.vscode-server.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, disko, nur, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, disko, nur, vscode-server, ... }@inputs:
     let
       inherit (self) outputs;
     in
@@ -18,6 +20,7 @@
         modules = [
           disko.nixosModules.disko
           nur.nixosModules.nur
+          vscode-server.nixosModules.default
           ./nixos/configuration.nix
         ];
       };
