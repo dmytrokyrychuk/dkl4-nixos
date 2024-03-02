@@ -39,6 +39,10 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    extraConfig = ''
+      :set number
+      :set relativenumber
+    '';
   };
 
   programs.home-manager.enable = true;
