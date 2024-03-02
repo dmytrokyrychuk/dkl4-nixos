@@ -1,13 +1,15 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-  inputs.home-manager.url = "github:nix-community/home-manager/release-23.11";
-  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.disko.url = "github:nix-community/disko";
-  inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nur.url = "github:nix-community/NUR";
-  inputs.vscode-server.url = "github:nix-community/nixos-vscode-server";
-  inputs.vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/NUR";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, disko, nur, vscode-server, ... }@inputs:
     let
