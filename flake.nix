@@ -34,6 +34,7 @@
         nur.nixosModules.nur
         vscode-server.nixosModules.default
         ./nixos/configuration.nix
+        ./overlays/postman.nix
       ];
     };
     homeConfigurations = {
@@ -45,6 +46,7 @@
           nix-index-database.hmModules.nix-index
           {programs.nix-index-database.comma.enable = true;}
           ./home-manager/home.nix
+          ./overlays/postman.nix
         ];
       };
     };

@@ -1,10 +1,9 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }: {
   # You can import other home-manager modules here
   imports = [
@@ -31,6 +30,7 @@
       speedcrunch
       calibre
       kazam
+      postman
     ];
   };
 
@@ -96,7 +96,7 @@
     userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
-      "nix.serverSettings.nil.formatting.command" = ["nixpkgs-fmt"];
+      "nix.serverSettings.nil.formatting.command" = [ "nixpkgs-fmt" ];
 
       "workbench.colorTheme" = "Ayu Light";
       "workbench.iconTheme" = "vscode-icons";
@@ -104,11 +104,12 @@
       "remote.SSH.useLocalServer" = false;
       "remote.SSH.remotePlatform" = {
         "dkvm03.home.kyrych.uk" = "linux";
+        "experiments.home.kyrych.uk" = "linux";
       };
 
       "editor.lineNumbers" = "relative";
       "editor.renderWhitespace" = "trailing";
-      "editor.rulers" = [80 120];
+      "editor.rulers" = [ 80 120 ];
       "editor.formatOnSave" = true;
 
       "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
@@ -154,7 +155,7 @@
       Host dkvm03.home.kyrych.uk
       ForwardAgent yes
     '';
-    includes = ["${config.home.homeDirectory}/.ssh/config_private"];
+    includes = [ "${config.home.homeDirectory}/.ssh/config_private" ];
   };
 
   # Nicely reload system units when changing configs
