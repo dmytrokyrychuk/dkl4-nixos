@@ -1,5 +1,5 @@
 {
-    "nix.formatterPath": [
+    "nix.serverSettings.nil.formatting.command": [
         "nix",
         "fmt",
         "--",

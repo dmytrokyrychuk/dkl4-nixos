@@ -1,9 +1,10 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
   # You can import other home-manager modules here
   imports = [
@@ -96,7 +97,7 @@
     userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
-      "nix.serverSettings.nil.formatting.command" = [ "nixpkgs-fmt" ];
+      "nix.serverSettings.nil.formatting.command" = ["nixpkgs-fmt"];
 
       "workbench.colorTheme" = "Ayu Light";
       "workbench.iconTheme" = "vscode-icons";
@@ -109,7 +110,7 @@
 
       "editor.lineNumbers" = "relative";
       "editor.renderWhitespace" = "trailing";
-      "editor.rulers" = [ 80 120 ];
+      "editor.rulers" = [80 120];
       "editor.formatOnSave" = true;
 
       "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
@@ -155,7 +156,7 @@
       Host dkvm03.home.kyrych.uk
       ForwardAgent yes
     '';
-    includes = [ "${config.home.homeDirectory}/.ssh/config_private" ];
+    includes = ["${config.home.homeDirectory}/.ssh/config_private"];
   };
 
   # Nicely reload system units when changing configs
