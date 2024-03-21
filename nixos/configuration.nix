@@ -92,7 +92,6 @@ in {
     home-manager
     slack
     google-chrome
-    microsoft-edge
     telegram-desktop
     nil
     nixpkgs-fmt
