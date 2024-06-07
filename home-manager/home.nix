@@ -31,6 +31,7 @@
       speedcrunch
       calibre
       kazam
+      remmina
       postman
     ];
   };
