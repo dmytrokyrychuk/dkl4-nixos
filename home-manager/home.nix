@@ -58,7 +58,10 @@
   programs.git.enable = true;
   programs.git.userName = "Dmytro Kyrychuk";
   programs.git.userEmail = "dmytro@kyrych.uk";
-  programs.git.extraConfig.init.defaultBranch = "main";
+  programs.git.extraConfig = {
+    init.defaultBranch = "main";
+    rebase.autostash = true;
+  };
   programs.git.aliases = {
     fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";
   };
