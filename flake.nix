@@ -35,20 +35,11 @@
         vscode-server.nixosModules.default
         ./nixos/configuration.nix
         ./overlays/postman.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.users.dmytro = import ./home-manager/home.nix;
+        }
       ];
-    };
-    homeConfigurations = {
-      "dmytro@dkl4" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          nur.hmModules.nur
-          nix-index-database.hmModules.nix-index
-          {programs.nix-index-database.comma.enable = true;}
-          ./home-manager/home.nix
-          ./overlays/postman.nix
-        ];
-      };
     };
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.pkgs.alejandra;
   };
