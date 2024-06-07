@@ -102,7 +102,6 @@ in {
     spotify
     obsidian
     virt-viewer
-    dbeaver
     shutter
     gnumeric
     meld

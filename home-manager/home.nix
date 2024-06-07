@@ -30,6 +30,7 @@
     packages = with pkgs; [
       speedcrunch
       calibre
+      dbeaver-bin
       kazam
       remmina
       postman
