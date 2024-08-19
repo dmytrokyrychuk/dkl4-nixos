@@ -37,7 +37,10 @@
         ./overlays/postman.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.users.dmytro = import ./home-manager/home.nix;
+          home-manager.users.dmytro.imports = [
+            nur.hmModules.nur
+            ./home-manager/home.nix
+          ];
         }
       ];
     };
