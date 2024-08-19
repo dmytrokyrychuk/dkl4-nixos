@@ -153,15 +153,7 @@
     enable = true;
     serverAliveInterval = 30;
     forwardAgent = true;
-    extraConfig = ''
-      AddKeysToAgent yes
-
-      Host *.home.kyrych.uk
-      ForwardAgent yes
-
-      Host dkvm03.home.kyrych.uk
-      ForwardAgent yes
-    '';
+    addKeysToAgent = "yes";
     includes = ["${config.home.homeDirectory}/.ssh/config_private"];
   };
 
