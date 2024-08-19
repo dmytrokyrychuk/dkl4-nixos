@@ -33,6 +33,7 @@
       dbeaver-bin
       kazam
       remmina
+      winbox
       postman
     ];
   };
