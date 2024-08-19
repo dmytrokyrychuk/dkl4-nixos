@@ -140,6 +140,8 @@ in {
   #   enableSSHSupport = true;
   # };
 
+  virtualisation.spiceUSBRedirection.enable = true;
+
   # List services that you want to enable:
 
   services.vscode-server.enable = true;
