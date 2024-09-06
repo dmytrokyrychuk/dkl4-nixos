@@ -89,6 +89,7 @@ in {
   environment.systemPackages = with pkgs; [
     vim
     kakoune
+    dig
     git
     home-manager
     slack
