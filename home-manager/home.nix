@@ -35,6 +35,10 @@
       remmina
       winbox
       postman
+      element-desktop
+      fstl
+      freecad
+      rpi-imager
     ];
   };
 
