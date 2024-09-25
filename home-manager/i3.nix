@@ -32,6 +32,9 @@
           "${mod}+Shift+${right}" = "move right";
           "${mod}+Shift+${up}" = "move up";
           "${mod}+Shift+${down}" = "move down";
+
+          # Make a screenshot of a selected region
+          "Mod4+Shift+s" = "exec shutter -s";
         };
     };
     extraConfig = ''
