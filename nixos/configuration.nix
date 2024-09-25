@@ -25,6 +25,7 @@ in {
     ./btrbk.nix
     ./print-scan.nix
     ./flatpak.nix
+    ./fpv.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
