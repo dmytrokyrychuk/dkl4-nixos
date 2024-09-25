@@ -10,7 +10,7 @@
   dmytrokyrychukKeys = let
     content = pkgs.fetchurl {
       url = "https://github.com/dmytrokyrychuk.keys";
-      sha256 = "sha256-D45/lJ76om8VioV7uyCl19JbbArkqXCztyDLNlfW52g=";
+      sha256 = "sha256-aoFxPt0c6XDOC1aIS3N/7nWhgLvyKEFE1xn+s9ne4mE=";
     };
   in
     pkgs.lib.splitString "\n" (builtins.readFile content);
