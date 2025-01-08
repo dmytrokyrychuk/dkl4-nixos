@@ -39,6 +39,10 @@
       fstl
       freecad
       rpi-imager
+      realvnc-vnc-viewer
+      signal-desktop
+      avidemux
+      openshot-qt
     ];
   };
 

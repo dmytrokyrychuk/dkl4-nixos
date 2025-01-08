@@ -10,7 +10,7 @@
 
   services.udev.extraRules = builtins.readFile (pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/platformio/platformio-core/master/platformio/assets/system/99-platformio-udev.rules";
-    hash = "sha256-16O7/yzB85W34NKdHoS6FnJUh5c4fUDcV4jEnQaME8Y=";
+    hash = "sha256-CfOs4g5GoNXeRUmkKY7Kw9KdgOqX5iRLMvmP+u3mqx8=";
   });
 
   nixpkgs = {

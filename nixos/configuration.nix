@@ -111,7 +111,10 @@ in {
     gnome.file-roller
     gnome.simple-scan
     #  wget
+    qemu
   ];
+
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   fonts.packages = [
     (pkgs.nerdfonts.override {
@@ -174,7 +177,7 @@ in {
   };
 
   # FIXME: temporary
-  networking.firewall.allowedTCPPorts = [5432 5433];
+  networking.firewall.allowedTCPPorts = [5432 5433 8000];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
