@@ -7,6 +7,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscode-server.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:Mic92/nix-index-database";
@@ -31,14 +32,14 @@
       specialArgs = {inherit inputs outputs;};
       modules = [
         disko.nixosModules.disko
-        nur.nixosModules.nur
+        nur.modules.nixos.default
         vscode-server.nixosModules.default
         ./nixos/configuration.nix
         ./overlays/postman.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.users.dmytro.imports = [
-            nur.hmModules.nur
+            nur.modules.homeManager.default
             ./home-manager/home.nix
           ];
         }

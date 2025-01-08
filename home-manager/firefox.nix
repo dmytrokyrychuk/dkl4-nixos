@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -9,7 +8,7 @@
       id = 0;
       name = "default";
       isDefault = true;
-      extensions = with config.nur.repos.rycee.firefox-addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         tree-style-tab
       ];
