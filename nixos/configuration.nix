@@ -108,8 +108,8 @@ in {
     gnumeric
     meld
     libreoffice-qt
-    gnome.file-roller
-    gnome.simple-scan
+    file-roller
+    simple-scan
     #  wget
     qemu
   ];
