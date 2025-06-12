@@ -36,6 +36,7 @@
         vscode-server.nixosModules.default
         ./nixos/configuration.nix
         ./overlays/postman.nix
+        ./overlays/webots.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.users.dmytro.imports = [
