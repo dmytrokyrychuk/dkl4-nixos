@@ -43,6 +43,9 @@
       signal-desktop
       avidemux
       openshot-qt
+      clockify
+      citrix_workspace
+      azuredatastudio
     ];
   };
 

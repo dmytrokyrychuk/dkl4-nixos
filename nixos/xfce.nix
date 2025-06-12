@@ -68,7 +68,7 @@
     xfce.xfce4-xkb-plugin
     xfce.xfce4-pulseaudio-plugin
     xfce.xfce4-genmon-plugin
-    gnome.pomodoro
+    gnome-pomodoro
   ];
 
   security.polkit.enable = true;
