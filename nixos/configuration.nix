@@ -121,7 +121,6 @@ in {
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
     gst_all_1.gst-vaapi
-    webots
     gnumake
     wireguard-tools
     e2fsprogs
@@ -131,12 +130,14 @@ in {
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   fonts.packages = [
-    (pkgs.nerdfonts.override {
-      fonts = ["CodeNewRoman" "DroidSansMono"];
-    })
+    pkgs.nerd-fonts.code-new-roman
+    pkgs.nerd-fonts.droid-sans-mono
   ];
 
-  programs.vim.defaultEditor = true;
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   # Allow running AppImage files directly
   boot.binfmt.registrations.appimage = {
@@ -187,7 +188,10 @@ in {
   };
 
   # FIXME: temporary
-  networking.firewall.allowedTCPPorts = [5432 5433 8000];
+  networking.firewall.allowedTCPPorts = [5432 5433 8000 554];
+  networking.firewall.allowedUDPPorts = [5004 5005];
+  # networking.wg-quick.enabled = true;
+  # networking.wg-quick.interfaces.wg0.configFile = "/home/dmytro/angryeyes/wg0.conf";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

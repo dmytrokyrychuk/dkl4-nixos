@@ -87,66 +87,68 @@
 
   programs.vscode = {
     enable = true;
-    enableUpdateCheck = false;
     package = pkgs.vscode;
-    extensions = with pkgs.vscode-extensions;
-      [
-        vscodevim.vim
-        jnoortheen.nix-ide
-        oderwat.indent-rainbow
-        arrterian.nix-env-selector
-        ms-python.python
-        ms-vscode-remote.remote-ssh
-        ms-vscode-remote.remote-containers
-        github.copilot
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "vscode-icons";
-          publisher = "vscode-icons-team";
-          version = "12.2.0";
-          sha256 = "sha256-PxM+20mkj7DpcdFuExUFN5wldfs7Qmas3CnZpEFeRYs=";
-        }
-        {
-          name = "ayu";
-          publisher = "teabyii";
-          version = "1.0.5";
-          sha256 = "sha256-+IFqgWliKr+qjBLmQlzF44XNbN7Br5a119v9WAnZOu4=";
-        }
-      ];
-    userSettings = {
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
-      "nix.serverSettings.nil.formatting.command" = ["nixpkgs-fmt"];
+    profiles.default = {
+      enableUpdateCheck = false;
+      extensions = with pkgs.vscode-extensions;
+        [
+          vscodevim.vim
+          jnoortheen.nix-ide
+          oderwat.indent-rainbow
+          arrterian.nix-env-selector
+          ms-python.python
+          ms-vscode-remote.remote-ssh
+          ms-vscode-remote.remote-containers
+          github.copilot
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "vscode-icons";
+            publisher = "vscode-icons-team";
+            version = "12.2.0";
+            sha256 = "sha256-PxM+20mkj7DpcdFuExUFN5wldfs7Qmas3CnZpEFeRYs=";
+          }
+          {
+            name = "ayu";
+            publisher = "teabyii";
+            version = "1.0.5";
+            sha256 = "sha256-+IFqgWliKr+qjBLmQlzF44XNbN7Br5a119v9WAnZOu4=";
+          }
+        ];
+      userSettings = {
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings.nil.formatting.command" = ["nixpkgs-fmt"];
 
-      "workbench.colorTheme" = "Ayu Light";
-      "workbench.iconTheme" = "vscode-icons";
+        "workbench.colorTheme" = "Ayu Light";
+        "workbench.iconTheme" = "vscode-icons";
 
-      "remote.SSH.useLocalServer" = false;
-      "remote.SSH.remotePlatform" = {
-        "dkvm03.home.kyrych.uk" = "linux";
-        "experiments.home.kyrych.uk" = "linux";
+        "remote.SSH.useLocalServer" = false;
+        "remote.SSH.remotePlatform" = {
+          "dkvm03.home.kyrych.uk" = "linux";
+          "experiments.home.kyrych.uk" = "linux";
+        };
+
+        "editor.lineNumbers" = "relative";
+        "editor.renderWhitespace" = "trailing";
+        "editor.rulers" = [80 120];
+        "editor.formatOnSave" = true;
+
+        "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
+        "terminal.integrated.defaultProfile.linux" = "fish";
+
+        "vim.handleKeys" = {
+          "<C-p>" = false;
+        };
+        "vim.easymotion" = true;
+
+        "git.openDiffOnClick" = false;
+        "scm.defaultViewMode" = "tree";
+
+        "zenMode.fullScreen" = false;
+
+        "vsicons.dontShowNewVersionMessage" = true;
       };
-
-      "editor.lineNumbers" = "relative";
-      "editor.renderWhitespace" = "trailing";
-      "editor.rulers" = [80 120];
-      "editor.formatOnSave" = true;
-
-      "dotfiles.repository" = "dmytrokyrychuk/devcontainer-dotfiles";
-      "terminal.integrated.defaultProfile.linux" = "fish";
-
-      "vim.handleKeys" = {
-        "<C-p>" = false;
-      };
-      "vim.easymotion" = true;
-
-      "git.openDiffOnClick" = false;
-      "scm.defaultViewMode" = "tree";
-
-      "zenMode.fullScreen" = false;
-
-      "vsicons.dontShowNewVersionMessage" = true;
     };
   };
 

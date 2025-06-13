@@ -1,6 +1,6 @@
 {...}: {
   programs.kitty.enable = true;
-  programs.kitty.theme = "Ayu Light";
+  programs.kitty.themeFile = "ayu_light";
 
   xsession.windowManager.i3.config.terminal = "kitty";
 

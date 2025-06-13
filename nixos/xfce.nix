@@ -29,10 +29,8 @@
   # Nof sure if needed with XFCE
   # services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
-  hardware = {
-    pulseaudio.enable = false;
-    bluetooth.enable = true;
-  };
+  services.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
 
   programs.thunar = {
     enable = true;

@@ -1,14 +1,11 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.firefox.enable = true;
   programs.firefox.profiles = {
     default = {
       id = 0;
       name = "default";
       isDefault = true;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         tree-style-tab
       ];
