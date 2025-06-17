@@ -125,7 +125,10 @@ in {
     wireguard-tools
     e2fsprogs
     vlc
+    uv
   ];
+
+  programs.nix-ld.enable = true;
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
