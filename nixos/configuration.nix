@@ -10,7 +10,7 @@
   dmytrokyrychukKeys = let
     content = pkgs.fetchurl {
       url = "https://github.com/dmytrokyrychuk.keys";
-      sha256 = "sha256-aoFxPt0c6XDOC1aIS3N/7nWhgLvyKEFE1xn+s9ne4mE=";
+      sha256 = "sha256-vzEQfHFkRFYh8xrT2HM3SJZXA5TizDHryX/s7KlJT3E=";
     };
   in
     pkgs.lib.splitString "\n" (builtins.readFile content);
@@ -188,6 +188,11 @@ in {
         "electron-25.9.0"
       ];
     };
+  };
+
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 30d";
   };
 
   # FIXME: temporary
